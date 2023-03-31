@@ -1,0 +1,46 @@
+<ng-container padding-top *ngIf="(auth.user | async) || {} as user" >
+
+
+    <ion-card *ngFor="let profile of profiles | async;">
+        {{ profile.displayName}} hello
+
+      </ion-card>
+  <ion-card *ngFor="let post of posts | async; trackBy: trackByFn">
+      <ion-item>
+          <ion-avatar item-start>
+                  <img [src]="user.photoURL">
+          </ion-avatar>
+          <h2 > {{ post.displayName }}</h2>
+          <p> {{ post.createdAt }}</p>
+        </ion-item>
+
+    <img [src]="post.img || 'assets/imgs/advance-card-tmntr.jpg'" onError="this.src='assets/imgs/advance-card-tmntr.jpg'">
+    <ion-card-content>
+     Testing Content
+      {{ post.content }}
+     
+      
+      <hr>
+      
+
+
+      <ion-row>
+          <ion-col>
+              <heart-button [userId]="user.uid" [post]="post"></heart-button>
+              
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-start clear small>
+              <ion-icon name="text"></ion-icon>
+              <div> Comments</div>
+            </button>
+          </ion-col>
+
+        </ion-row>
+
+      
+    </ion-card-content>
+  </ion-card>
+
+
+</ng-container>
