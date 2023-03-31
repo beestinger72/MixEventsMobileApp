@@ -1,0 +1,46 @@
+<ion-header>
+
+	<ion-navbar>
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title>Tasks</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-content padding>
+		<button ion-button color="primary" block (click)="doConfirm()">Show Confirm Alert</button>
+	
+
+<h1>Rage test widget</h1>
+
+<ion-item>
+	<ion-range pin="true" min="1" max="10" step="1" color="secondary" [(ngModel)]="brightValue" #ctrl="ngModel" (ionhange)="setBright(brightValue)">
+	  <ion-icon range-left small name="sunny"></ion-icon>
+	  <ion-icon range-right name="sunny"></ion-icon>
+	</ion-range>
+  </ion-item>
+
+  <h1>Brightness test</h1>
+ <p>Brightness is : {{brightValue}}</p>
+
+
+ <h1>Contact Form Test</h1>
+ <input type="text" [(ngModel)] ="msgToSend" #ctl="ngModel"/>
+ <br>
+ <button ion-button full (click)=" showSimpleload(msgToSend)" > send data </button>
+ <br>
+ <button ion-button full (click)="goToSomethingElse()"> Go Data</button>
+ <br>
+ <button ion-button full (click)="showModalload(msgToSend)"> Show Data in Modal</button>
+
+ <br>
+ <button ion-button full (click)="showPage(msgToSend)"> Show Data in Modal to tasks using providers</button>
+
+
+<p>Message : {{msgToSend}}</p> 
+<p *ngIf="isReturn"> Return Message :  {{returnMessage}}</p> 
+</ion-content>

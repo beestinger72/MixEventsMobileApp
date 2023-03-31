@@ -1,0 +1,148 @@
+<!--
+  Generated template for the ActivityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      <ion-title>
+         Activity Stream
+      </ion-title>
+      <ion-buttons end>
+          <button ion-button tappable (click)="presentNotifications($event)">
+            <ion-icon name="notifications"></ion-icon>
+          </button>
+          <button ion-button tappable (click)="goToAccount()">
+            <ion-icon name="cog"></ion-icon>
+          </button>
+        </ion-buttons>
+    </ion-navbar>
+    
+ 
+
+  
+    <!-- <ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="category">
+            <ion-segment-button value="activity" > 
+               Event Feed
+            </ion-segment-button>
+      
+            <ion-segment-button value="notifications">
+                Notifications
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar> -->
+  </ion-header>
+<ion-content fullscreen >
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
+
+      
+     <p> feed content as component</p>
+      <post-feed></post-feed>
+    <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher> -->
+
+    <!-- <div [ngSwitch]="category"> -->
+      
+    <!-- <ion-list *ngSwitchCase="'activity'"> -->
+      <ion-card *ngFor="let post of posts">
+        <!-- <ion-item>
+          <ion-avatar item-start>
+            <img [src]="" (click)="avatarTapped(card)">
+          </ion-avatar>
+          <h2>{{card.name}}</h2>
+          <p>{{card.date}}</p>
+        </ion-item> -->
+        <img [src]="" >
+        <ion-card-content>
+            <ion-list>
+                <ion-item-sliding >
+                    <ion-item>
+                        <ion-avatar item-start>
+                          <img src="img/marty-avatar.png">
+                        </ion-avatar>
+                        <h2>Marty McFly</h2>
+                        <p>November 5, 1955</p>
+                      </ion-item>
+                      <ion-card-content>
+                          <p>{{post.text}}</p>
+                        </ion-card-content>
+
+                        <img src="https://ionicframework.com/dist/preview-app/www/assets/img/advance-card-bttf.png">
+                
+                  <ion-item-options>
+                    <button ion-button color="danger" (click)="deleteMessage(post.$key)">
+                    <ion-icon name="ios-trash"></ion-icon>
+                    delete
+                  </button>
+                  <button ion-button color="success" (click)="updateMessage(post)">
+                      <ion-icon name="ios-create"></ion-icon>
+                      edit
+                    </button>
+                  </ion-item-options>
+            
+                </ion-item-sliding>
+                
+              </ion-list>
+        </ion-card-content>
+        <ion-row>
+          <ion-col>
+            <button ion-button color="primary" clear small icon-left (click)="like(posts)">
+            <ion-icon name='thumbs-up'></ion-icon>
+            {{posts.likes}} Likes
+          </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button color="primary" clear small icon-left (click)="comment(posts)">
+            <ion-icon name='text'></ion-icon>
+            {{posts.comments}} Comments
+          </button>
+          </ion-col>
+          <ion-col center text-center>
+            <ion-note>
+              {{posts.timestamp}}
+            </ion-note>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+
+    
+  
+ 
+
+      <ion-fab bottom right #fab>
+        <button ion-fab (click)="goToSomethingElse()"><ion-icon name="md-create"></ion-icon></button>
+      </ion-fab>
+
+    <fcm-handler></fcm-handler>
+    </ion-content>
+  
+    <!-- <ion-list *ngSwitchCase="'soicalwall'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="img/thumbnail-puppy-1.jpg">
+        </ion-thumbnail>
+        <h2>Ruby</h2>
+      </ion-item>
+      ...
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'notifications'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      ...
+    </ion-list> -->
+ <!-- </div> -->

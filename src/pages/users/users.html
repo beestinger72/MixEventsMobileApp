@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Users</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+      <ion-searchbar color="primary"
+                     [(ngModel)]="searchTerm"
+                     [formControl]="searchControl"
+                     placeholder="Search">
+      </ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  
+
+
+    <ng-container *ngIf="auth.user | async as currentUser">
+     
+        <ion-list>
+            <ion-item *ngFor="let user of users | async; trackBy: trackByFn">
+              <ion-avatar item-start>
+                <img [src]="user.photoURL">
+              </ion-avatar>
+              <h2>{{ user.displayName }}</h2>
+
+              <user-relationship 
+                  [currentUserId]="currentUser.uid"
+                  [followId]="user.uid">
+              </user-relationship>
+
+            </ion-item>
+          </ion-list>
+
+    </ng-container>
+</ion-content>
